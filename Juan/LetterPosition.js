@@ -42,8 +42,6 @@ function getValueAlphabet(letra) {
 	}
 }
 
-alphabetPosition("x+y^8>e^");
-
 function alphabetPosition(text) {
 	text = text.toUpperCase();
 	var final = "";
