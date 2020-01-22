@@ -21,8 +21,7 @@ void Motor(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc
 void Dibuja1(char campo[Y][X]);
 void Entrada(char campo [Y] [X], int *pelX, int *pelY, int *inij, int *finj, int *inipc, int *finpc, int *modX, int *modY, int *modpc, int *gol);
 
-int main(void)
-{
+int main(void){
     system("title PONG");
     system("color f0");
     int pelX, pelY, inij, finj, inipc, finpc; // Posicion
@@ -43,76 +42,57 @@ int main(void)
     return 0;
 }
 
-void Campo(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc, int finpc)
-{
+void Campo(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc, int finpc){
     Frontera(campo);
     RaquetaJ(campo, inij, finj);
     RaquetaPC(campo, inipc, finpc);
     Pelota(campo, pelX, pelY);
 }
 
-void Frontera(char campo[Y][X])
-{
-    for( i = 0; i < Y; i++ )
-    {
-        for( j = 0; j < X; j++ )
-        {
-            if( i == 0 || i == Y-1 )
-            {
+void Frontera(char campo[Y][X]){
+    for( i = 0; i < Y; i++ ){
+        for( j = 0; j < X; j++ ){
+            if( i == 0 || i == Y-1 ){
                 campo[i][j] = '-';
-            }else if( j == 0 || j == X-1 )
-            {
+            }else if( j == 0 || j == X-1 ){
                 campo[i][j] = '|';
-            }
-            else
-            {
+            }else{
                 campo[i][j] = ' ';
             }
         }
     }
 }
 
-void RaquetaJ(char campo[Y][X], int inij, int finj)
-{
-    for( i = inij; i <= finj; i++ )
-    {
-        for( j = 2; j <= 3; j++ )
-        {
+void RaquetaJ(char campo[Y][X], int inij, int finj){
+    for( i = inij; i <= finj; i++ ){
+        for( j = 2; j <= 3; j++ ){
             campo[i][j] = 'X';
         }
     }
 }
 
-void RaquetaPC(char campo[Y][X], int inipc, int finpc)
-{
-    for( i = inipc; i <= finpc; i++ )
-    {
-        for( j = X-4; j <= X-3; j++ )
-        {
+void RaquetaPC(char campo[Y][X], int inipc, int finpc){
+    for( i = inipc; i <= finpc; i++ ){
+        for( j = X-4; j <= X-3; j++ ){
             campo[i][j] = 'X';
         }
     }
 }
 
-void Pelota(char campo[Y][X], int pelX, int pelY)
-{
+void Pelota(char campo[Y][X], int pelX, int pelY){
     campo[pelY][pelX] = 'O';
 }
 
-void Dibuja(char campo[Y][X])
-{
-    for(i = 0; i < Y; i++)
-    {
-        for(j = 0; j < X; j++)
-        {
+void Dibuja(char campo[Y][X]){
+    for(i = 0; i < Y; i++){
+        for(j = 0; j < X; j++){
             printf("%c", campo[i][j]);
         }
         printf("\n");
     }
 }
 
-void Motor(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc, int finpc, int modX, int modY, int modpc)
-{
+void Motor(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc, int finpc, int modX, int modY, int modpc){
     int gol = 0;
     do{
         Dibuja1(campo);
@@ -122,57 +102,45 @@ void Motor(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc
     }while(gol < 1);
 }
 
-void Dibuja1(char campo[Y][X])
-{
+void Dibuja1(char campo[Y][X]){
     system("cls");
     Dibuja(campo);
 }
 
-void Entrada(char campo [Y] [X], int *pelX, int *pelY, int *inij, int *finj, int *inipc, int *finpc, int *modX, int *modY, int *modpc, int *gol)
-{
+void Entrada(char campo [Y] [X], int *pelX, int *pelY, int *inij, int *finj, int *inipc, int *finpc, int *modX, int *modY, int *modpc, int *gol){
     int motor = 0;
     char tecla;
     //Verficación
-    if( *pelY == 1 || *pelY == Y - 2 )
-    {
+    if( *pelY == 1 || *pelY == Y - 2 ){
         *modY *= -1;
     }
 
-    if( (*pelX) == 1 || (*pelX) == X - 2 )
-    {
+    if( (*pelX) == 1 || (*pelX) == X - 2 ){
         *gol = 1;
     }
 
-    if( *pelX == 4 )
-    {
-        for(motor = (*inij); motor <= (*finj); motor++)
-        {
-            if( motor == *pelY )
-            {
+    if( *pelX == 4 ){
+        for(motor = (*inij); motor <= (*finj); motor++){
+            if( motor == *pelY ){
                 (*modX) *= -1;
             }
         }
     }
 
-    if( *pelX == X - 5 )
-    {
-        for( motor == (*inipc); motor <= (*finpc); motor++)
-        {
-            if(motor == (*pelY))
-            {
+    if( *pelX == X - 5 ){
+        for( motor == (*inipc); motor <= (*finpc); motor++){
+            if(motor == (*pelY)){
                 (*modX) *= 1;
             }
         }
     }
 
-    if( (*inipc) == 1 || (*finpc) == Y - 1 )
-    {
+    if( (*inipc) == 1 || (*finpc) == Y - 1 ){
         *modpc *= -1;
     }
 
     //Modificacioń
-    if( *gol <= 4 )
-    {
+    if( *gol <= 4 ){
         //pelota
         *pelX += (*modX);
         *pelY += (*modY);
@@ -180,21 +148,16 @@ void Entrada(char campo [Y] [X], int *pelX, int *pelY, int *inij, int *finj, int
         *inipc += (*modpc);
         *finpc += (*modpc);
         //jugador
-        if( kbhit() == 1 )
-        {
+        if( kbhit() == 1 ){
             tecla = getch();
-            if( tecla == 'w')
-            {
-                if( *inij != 1)
-                {
+            if( tecla == 'w'){
+                if( *inij != 1){
                     *inij -= 1;
                     *finj -= 1;
                 }
             }
-            if(tecla == 's' )
-            {
-                if( *finj != Y - 2 )
-                {
+            if(tecla == 's' ){
+                if( *finj != Y - 2 ){
                     *inij += 1;
                     *finj += 1;
                 }
