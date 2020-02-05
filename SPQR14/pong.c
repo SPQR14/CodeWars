@@ -1,5 +1,5 @@
 /*
-*   Pico Lara Alberto Isaac 05/ Julio / 2015.
+*   Pico Lara Alberto Isaac 21/01/2020.
 *   juego de pong.
 */
 
@@ -98,7 +98,7 @@ void Motor(char campo [Y] [X], int pelX, int pelY, int inij, int finj, int inipc
         Dibuja1(campo);
         Entrada(campo, &pelX, &pelY, &inij, &finj, &inipc, &finpc, &modX, &modY, &modpc, &gol);
         Campo(campo, pelX,  pelY, inij, finj, inipc, finpc);
-        Sleep(20);
+        Sleep(15);
     }while(gol < 1);
 }
 
