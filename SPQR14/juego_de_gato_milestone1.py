@@ -6,7 +6,6 @@ Milestone
 
 import os
 
-
 tablero = [['7 ', '| ', '8 ', '| ', '9'],
            ['- ','- ' ,'- ', '- ' ,'- '], 
            ['4 ', '| ', '5 ', '| ', '6'],
@@ -19,7 +18,6 @@ turno = 1
 jugador = 'X'
 numero_jugador = 1
 r = ''
-
 
 def inputs(message, tiradas):
     while(True):
